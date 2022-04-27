@@ -1,42 +1,26 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import React from 'react'
+import Navbar from './Component/Navbar'
+import { Routes, Route, Link } from "react-router-dom";
+import Resume from './Component/Resume';
+import Home from './Component/Home';
+import HelpfulWebsites from './Component/HelpfulWebsites';
+import PesonalGrowth from './Component/PesonalGrowth';
+import RecentJobs from './Component/RecentJobs';
 
-function App() {
+
+const App = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
-  );
+    <>
+     <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="resume" element={<Resume/>} />
+        <Route path="helpful-websites" element={<HelpfulWebsites/>} />
+        <Route path="recent-jobs" element={<RecentJobs/>} />
+        <Route path="personal-growth" element={<PesonalGrowth/>} />
+
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App
