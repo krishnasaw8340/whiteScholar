@@ -6,11 +6,12 @@ import Home from './Component/Home';
 import HelpfulWebsites from './Component/HelpfulWebsites';
 import PesonalGrowth from './Component/PesonalGrowth';
 import RecentJobs from './Component/RecentJobs';
+import { Box } from '@chakra-ui/react';
 
 
 const App = () => {
   return (
-    <>
+    <Box fontFamily={"'Ubuntu', sans-serif;'"}>
     <Navbar />
      <Routes>
         <Route path="/" element={<Home />} />
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="personal-growth" element={<PesonalGrowth/>} />
 
       </Routes>
-    </>
+    </Box>
   )
 }
 

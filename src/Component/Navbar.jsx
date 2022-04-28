@@ -76,7 +76,7 @@ const Navbar = (props) => {
         fontSize='lg'
       >
         {links.map(link => (
-            <LinkBox key={link.name} borderBottom={link.url === url && '2px white solid'}>
+            <LinkBox key={link.name} transition='all 200ms ease-in' borderBottom={link.url === url && '2px white solid' } _hover={{color:"blue.100", fontSize:"xl"}}>
             <Link  to={link.url}>{link.name}</Link>
             </LinkBox>
         ))}
@@ -88,7 +88,7 @@ const Navbar = (props) => {
       >
         <Button
           variant="outline"
-          _hover={{ bg: "teal.700", borderColor: "teal.700" }}
+          _hover={{ bg: "white", color: 'blue.500' }}
         >
           Contribute Now
         </Button>
