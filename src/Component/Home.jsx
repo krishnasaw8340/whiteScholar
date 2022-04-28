@@ -1,31 +1,29 @@
 import { AspectRatio, Box, Button, Flex, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
-import Navbar from './Navbar'
 import pic from "../img/pic.svg"
 
-console.log(pic);
 
 const Home = () => {
     return (
         <Box>
-            <Navbar />
             <Box p={4 * 8} pr={8} pl={24}>
-                <SimpleGrid columns={[1, 1, 2]}>
+                <SimpleGrid columns={{base: 1, md: 2}}>
                     <Flex direction='column' alignItems='flex-start' spacing={4}>
-                        <Text mb={4} fontSize='xl'>
-                            Resume, jobs, <Text as='span' color='blue.500' fontWeight='bold'>100+ </Text>Useful Websites and much more....
+                        <Text mb={4} fontSize='xl' bgGradient='linear(to-l, #9900F0, #46244C)'bgClip='text'
+>
+                            Resume, jobs, <Box as='span' color='blue.500' fontWeight='bold'>100+ </Box>Useful Websites and much more....
                         </Text>
 
                         <Heading mb={4}>
-                            Get a Exclusive Student Stuffs<Text> on <Text as='span' color='blue.500' fontWeight='bold'>One </Text>Place</Text>
+                            Get a Exclusive Student Stuffs in <Box as='span' color='blue.500' fontWeight='bold'> One </Box>Place
                         </Heading>
 
                         <Text mb={4} fontSize='lg'>
                             WhiteScholar is all in one storehouse for students, professionals. It
-                            <Text> provides you to Build Resume,  Find a Jobs, Useful Websites, Productivity </Text>
-                            <Text> tools like, Music, personal growth. Your are just one step away to Explore </Text>
+                            <Box as='span'> provides you to Build Resume,  Find a Jobs, Useful Websites, Productivity </Box>
+                            <Box as='span'> tools like, Music, personal growth. Your are just one step away to Explore </Box>
                             this community. Let's make this community.
-                            <Text as='span' color='blue.500' fontWeight='bold'> AWESOME!</Text>
+                            <Box as='span' color='blue.500' fontWeight='bold'> AWESOME!</Box>
                         </Text>
 
 
@@ -35,8 +33,10 @@ const Home = () => {
                         </Flex>
                     </Flex>
 
-                    <Box>
+                    <Box mt={{base: 12, md: 0}}>
+                    <AspectRatio ratio={4 / 3}>
                         <Image src={pic}></Image>
+                        </AspectRatio>
                     </Box>
 
                 </SimpleGrid>

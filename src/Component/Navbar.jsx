@@ -8,10 +8,11 @@ import {
   useDisclosure,
   Image,
   AspectRatio,
+  LinkBox,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import logo from "../img/logo2.svg"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const links = [
@@ -33,6 +34,7 @@ const links = [
     },
 ]
 const Navbar = (props) => {
+  const {pathname: url} = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
@@ -47,38 +49,42 @@ const Navbar = (props) => {
       color="white"
       {...props}
     >
-      <Flex h='100%' align="center" mr={5}>
+      <Flex align="center">
         <Heading w='150px'  as="h1" >
         <AspectRatio ratio={10 / 3}>
+        <Link to="/">
             <Image  src={logo}></Image>
+            </Link>
           </AspectRatio>
         </Heading>
       </Flex>
 
         
-      <Box display={{ sm: "block", md: "none" }} onClick={handleToggle}>
+      <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
         <HamburgerIcon />
       </Box>
 
       <Stack
-        direction={{ sm: "column", md: "row" }}
-        display={{ sm: isOpen ? "block" : "none", md: "flex" }}
-        width={{ sm: "full", md: "auto" }}
+        direction={{ base: "column", md: "row" }}
+        display={{ base: isOpen ? "block" : "none", md: "flex" }}
+        width={{ base: "full", md: "auto" }}
+        justify='center'
         alignItems="center"
         flexGrow={1}
-        mt={{ sm: 4, md: 0 }}
+        gap={5}
+        mt={{ base: 4, md: 0 }}
         fontSize='lg'
       >
         {links.map(link => (
-            <Box>
-            <Link key={link.name} to={link.url}>{link.name}</Link>
-            </Box>
+            <LinkBox key={link.name} borderBottom={link.url === url && '2px white solid'}>
+            <Link  to={link.url}>{link.name}</Link>
+            </LinkBox>
         ))}
       </Stack>
 
       <Box
-        display={{ sm: isOpen ? "block" : "none", md: "block" }}
-        mt={{ sm: 4, md: 0 }}
+        display={{ base: isOpen ? "block" : "none", md: "block" }}
+        mt={{ base: 4, md: 0 }}
       >
         <Button
           variant="outline"
