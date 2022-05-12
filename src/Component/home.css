@@ -1,31 +1,39 @@
 .diamond {
     position: relative;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     line-height: 200px;
     text-align: center;
     margin: 10px 40px;
   }
   .diamond:before {
     position: absolute;
+    border-radius: 30px;
     content: '';
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
     transform: rotateX(45deg) rotateZ(45deg);
-    box-shadow: 0px 0px 12px gray;
+    box-shadow: 5px 0px 10px 8px rgb(173, 191, 250);
+    background-color: rgb(110, 165, 248);
   }
   .diamond:after {
     position: absolute;
     top: 10px;
+    border-radius: 30px;
     left: 10px;
     content: '';
     height: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
     width: calc(100% - 22px);  /* -22px is 2 * 10px gap on either side - 2px border on either side */
-    border: 1px solid rgb(58, 138, 251);
+    border: 1px solid rgb(0, 37, 111);
     transform: rotateX(45deg) rotateZ(45deg);
   }
+ /* .diamond:hover,
+  .diamond:focus {
+    transition: 0.5s ;
+    transform: scale(1.1);
+  } */
  #text1{
      text-align: center;
      margin-bottom: 30px;
@@ -40,7 +48,7 @@
  #head{
      text-align: center;
      padding: 5px 0 5px 0;
-     background: -webkit-linear-gradient(rgb(255, 82, 24), rgb(24, 142, 246));
+     background: -webkit-linear-gradient( #82037e,#0cbaba);
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
      /* text-decoration: underline; */
@@ -48,4 +56,55 @@
      font-weight: bold;
      margin-bottom: 20px;
 
+ }
+ .animation{
+   animation: up-down 1.5s ease-in-out infinite alternate-reverse both;
+ }
+ @-webkit-keyframes up-down{
+   0%{
+     transform: translateY(15px);
+   }
+   100%{
+     transform: translateY(-15px);
+   }
+ }
+ @keyframes up-down{
+   0%{
+     transform: translateY(15px);
+   }
+   100%{
+     transform: translateY((-15px));
+   }
+ }
+
+ #footer{
+  background-color: #2077ea;
+  background-image: linear-gradient(315deg, #760172 10%,#176ceb 90%);
+ }
+ #navbg{
+  /* background-color: #2077ea;
+  background-image: linear-gradient(315deg, #760172 10%,#176ceb 90%); */
+  background: linear-gradient(-45deg, #ee7752, #760172, #176ceb, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	/* height: 100vh; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+  
+
+ #move-animatin{
+  will-change: transform;
+  animation: marquee-horizontal-alt 200s linear infinite;
  }

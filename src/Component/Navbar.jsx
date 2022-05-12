@@ -4,15 +4,17 @@ import {
   Stack,
   Heading,
   Flex,
-  Button,
   useDisclosure,
   Image,
   AspectRatio,
   LinkBox,
+  Button,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import logo from '../img/logo2.svg';
 import { Link, useLocation } from 'react-router-dom';
+import Contribute from './Contribute';
+import Auth from './Auth';
 
 const links = [
   {
@@ -28,10 +30,11 @@ const links = [
     url: '/helpful-websites',
   },
   {
-    name: 'Personal Growth',
-    url: '/personal-growth',
+    name: 'Study-Notes',
+    url: '/notes',
   },
 ];
+
 const Navbar = props => {
   const { pathname: url } = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,9 +47,12 @@ const Navbar = props => {
       justify="space-between"
       wrap="wrap"
       padding={6}
-      bg="blue.500"
+      // bg="blue.500"
       color="white"
       {...props}
+      boxShadow='0px 20px 20px -4px rgba(0,0,0,0.5)'
+      id="navbg"
+      borderRadius="0 5px 5px 10px"
     >
       <Flex align="center">
         <Heading w="150px" as="h1">
@@ -85,18 +91,12 @@ const Navbar = props => {
         ))}
       </Stack>
 
+
       <Box
         display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
         mt={{ base: 4, md: 0 }}
       >
-        <Button
-          variant="outline"
-          position="relative"
-          _hover={{ bg: 'white', color: 'blue.500' }}
-          _focus={{ bg: 'white', color: 'blue.500' }}
-        >
-          Contribute Now
-        </Button>
+        <Contribute/>
       </Box>
     </Flex>
   );
