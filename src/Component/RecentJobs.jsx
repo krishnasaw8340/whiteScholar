@@ -13,11 +13,11 @@ import {
   SimpleGrid,
   Spinner,
   Text,
-} from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
-import dayjs from 'dayjs';
-import { Search2Icon } from '@chakra-ui/icons';
+import dayjs from "dayjs";
+import { Search2Icon } from "@chakra-ui/icons";
 
 const filterJobs = (jobs, keyword, searchBy) => {
   return jobs.filter(job =>
@@ -27,13 +27,13 @@ const filterJobs = (jobs, keyword, searchBy) => {
 
 const RecentJobs = () => {
   const [jobs, setJobs] = useState([]);
-  const [keyword, setKeyword] = useState('');
-  const [filterBy, setFilterBy] = useState('title');
+  const [keyword, setKeyword] = useState("");
+  const [filterBy, setFilterBy] = useState("title");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // loading all the jobs data from DB
-    const API_URL = 'https://white-scholar-admin.herokuapp.com/rest';
+    const API_URL = "https://white-scholar-admin.herokuapp.com/rest";
     fetch(`${API_URL}/jobs`)
       .then(res => res.json())
       .then(data => setJobs([...data]));
@@ -55,7 +55,7 @@ const RecentJobs = () => {
       </Box>
 
       <Flex
-        flexDir={{ base: 'column', sm: 'row' }}
+        flexDir={{ base: "column", sm: "row" }}
         justify="space-evenly"
         align="center"
         gap={2}
@@ -92,7 +92,7 @@ const RecentJobs = () => {
       >
         {loading ? (
           <Center w="85vw">
-            <Spinner color="blue.500" />
+            <Spinner color="#2077ea" />
           </Center>
         ) : (
           filterJobs(jobs, keyword, filterBy).map((job, idx) => (
@@ -104,17 +104,17 @@ const RecentJobs = () => {
                 boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1);"
                 transition="all 200ms ease-in-out"
                 _hover={{
-                  transform: 'scale(1.1, 1.1)',
-                  borderRadius: '9px',
-                  borderLeft: '5px solid',
-                  borderColor: 'blue.300',
-                  boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.5);',
+                  transform: "scale(1.1, 1.1)",
+                  borderRadius: "9px",
+                  borderLeft: "5px solid",
+                  borderColor: "blue.300",
+                  boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.5);",
                 }}
               >
                 <LinkOverlay href={job.url} isExternal>
                   <Flex w="100%" h="100%" direction="column" align="flex-start">
                     <Text mb={3} color="gray.400">
-                      {dayjs(job.postedDate).format('DD-MM-YYYY')}
+                      {dayjs(job.postedDate).format("DD-MM-YYYY")}
                     </Text>
                     <Heading as="h3" size="md">
                       {job.title}
