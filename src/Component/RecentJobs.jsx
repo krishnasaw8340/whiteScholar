@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   Flex,
   GridItem,
   Heading,
@@ -10,6 +11,7 @@ import {
   LinkOverlay,
   Select,
   SimpleGrid,
+  Spinner,
   Text,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
@@ -27,6 +29,7 @@ const RecentJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [filterBy, setFilterBy] = useState('title');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // loading all the jobs data from DB
@@ -35,7 +38,7 @@ const RecentJobs = () => {
       .then(res => res.json())
       .then(data => setJobs([...data]));
 
-      console.log(jobs)
+    setTimeout(() => setLoading(false), 3000);
   }, []);
 
   return (
@@ -85,42 +88,49 @@ const RecentJobs = () => {
       <SimpleGrid
         mx={{ base: 0, sm: 8, md: 24 }}
         gap={4}
-        columns={{ base: 1, sm: 2, md: 3 }}
+        columns={{ base: 1, sm: 2, lg: 3 }}
       >
-        {filterJobs(jobs, keyword, filterBy).map((job, idx) => (
-          <GridItem key={idx} p={4} mx={{ base: 8, sm: 2 }}>
-            <LinkBox
-              p={4}
-              borderRadius={8}
-              boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1);"
-              transition="all 200ms ease-in-out"
-              _hover={{
-                transform: 'scale(1.1, 1.1)',
-                borderRadius: '9px',
-                borderLeft: '5px solid',
-                borderColor: 'blue.300',
-                boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.5);',
-              }}
-            >
-              <LinkOverlay href={job.url} isExternal>
-                <Flex w="100%" h="100%" direction="column" align="flex-start">
-                  <Text mb={3} color="gray.400">
-                    {dayjs(job.postedDate).format('DD-MM-YYYY')}
-                  </Text>
-                  <Heading as="h3" size="md">
-                    {job.title}
-                  </Heading>
-                  <Text color="gray.400" fontSize="sm" mb={5}>
-                    {job.companyName}
-                  </Text>
-                  <Text color="blue.500" fontWeight="bold">
-                    {job.location}
-                  </Text>
-                </Flex>
-              </LinkOverlay>
-            </LinkBox>
-          </GridItem>
-        ))}
+        {loading ? (
+          <Center w="85vw">
+            <Spinner color="blue.500" />
+          </Center>
+        ) : (
+          filterJobs(jobs, keyword, filterBy).map((job, idx) => (
+            <GridItem key={idx} p={4} mx={{ base: 8, sm: 2 }}>
+              <LinkBox
+                h="180px"
+                p={4}
+                borderRadius={8}
+                boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1);"
+                transition="all 200ms ease-in-out"
+                _hover={{
+                  transform: 'scale(1.1, 1.1)',
+                  borderRadius: '9px',
+                  borderLeft: '5px solid',
+                  borderColor: 'blue.300',
+                  boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.5);',
+                }}
+              >
+                <LinkOverlay href={job.url} isExternal>
+                  <Flex w="100%" h="100%" direction="column" align="flex-start">
+                    <Text mb={3} color="gray.400">
+                      {dayjs(job.postedDate).format('DD-MM-YYYY')}
+                    </Text>
+                    <Heading as="h3" size="md">
+                      {job.title}
+                    </Heading>
+                    <Text color="gray.500" fontSize="sm" mb={5}>
+                      {job.companyName}
+                    </Text>
+                    <Text color="blue.500" fontWeight="bold">
+                      {job.location}
+                    </Text>
+                  </Flex>
+                </LinkOverlay>
+              </LinkBox>
+            </GridItem>
+          ))
+        )}
       </SimpleGrid>
     </Box>
   );
