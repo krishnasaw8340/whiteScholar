@@ -10,6 +10,7 @@ import {
   DrawerOverlay,
   Flex,
   Input,
+  Select,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -76,12 +77,16 @@ const Contribute = () => {
                 border="1px solid black"
               >
                 <label>Enter Section</label>
-                <Input placeholder="ex. Hand-writtern-Notes, Websites, recent-job" />
+                <Select placeholder="Select option" defaultValue="job" required>
+                  <option value="job">Job</option>
+                  <option value="website">Website</option>
+                  <option value="notes">Notes</option>
+                </Select>
                 <br />
                 <label>Add new content</label>
-                <Input placeholder="Add here " />
+                <Input placeholder="Add here " required />
                 <label>Describe your content</label>
-                <Input placeholder="describe your content... " />
+                <Input placeholder="describe your content... " required />
               </DrawerBody>
             </Box>
 
