@@ -95,8 +95,8 @@ const RecentJobs = () => {
             <Spinner color="#2077ea" />
           </Center>
         ) : (
-          filterJobs(jobs, keyword, filterBy).map((job, idx) => (
-            <GridItem key={idx} p={4} mx={{ base: 8, sm: 2 }}>
+          filterJobs(jobs, keyword, filterBy).map(job => (
+            <GridItem key={job.id} id={job.id} p={4} mx={{ base: 8, sm: 2 }}>
               <LinkBox
                 h="180px"
                 p={4}

@@ -1,98 +1,15 @@
-import { DownloadIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Center,
   Flex,
   Heading,
-  IconButton,
-  Image,
   SimpleGrid,
   Spinner,
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import res1 from "../img/resume.png";
-// const simple = [
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Simple Resume",
-//   },
-// ];
-
-// const professional = [
-//   {
-//     png: res1,
-//     title: "Professional Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Professional Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Professional Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Professional Resume ",
-//   },
-//   {
-//     png: res1,
-//     title: "Professional Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Professional Resume",
-//   },
-// ];
-
-// const modern = [
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-//   {
-//     png: res1,
-//     title: "Modern Resume",
-//   },
-// ];
+import ResumeCard from "./ResumeCard";
 
 const Resume = () => {
   const [simpleResumes, setSimpleResumes] = useState([]);
@@ -102,13 +19,6 @@ const Resume = () => {
   const [isProChecked, setIsProChecked] = useState(true);
   const [isModernChecked, setIsModernChecked] = useState(true);
   const [loading, setLoading] = useState(true);
-
-  const onDownload = item => {
-    const link = document.createElement("a");
-    link.download = `README.md`;
-    link.href = "../../README.md";
-    link.click();
-  };
 
   useEffect(() => {
     // fetch all the resume from DB
@@ -145,7 +55,7 @@ const Resume = () => {
         </Text>
       </Box>
 
-      <Box w="100%">
+      <Box w="100%" pb="10%">
         <Flex
           justify="center"
           mx={{ base: 0, sm: 0, md: "80px" }}
@@ -153,19 +63,19 @@ const Resume = () => {
           gap={{ base: "20px", sm: "20px", md: "95px" }}
         >
           <Button
-            colorScheme={isSimpleChecked ? "twitter" : "blue"}
+            colorScheme={isSimpleChecked ? "twitter" : "blackAlpha"}
             onClick={() => setIsSimpleChecked(state => !state)}
           >
             Simple
           </Button>
           <Button
-            colorScheme={isProChecked ? "twitter" : "blue"}
+            colorScheme={isProChecked ? "twitter" : "blackAlpha"}
             onClick={() => setIsProChecked(state => !state)}
           >
             Professionals
           </Button>
           <Button
-            colorScheme={isModernChecked ? "twitter" : "blue"}
+            colorScheme={isModernChecked ? "twitter" : "blackAlpha"}
             onClick={() => setIsModernChecked(state => !state)}
           >
             Modern
@@ -186,85 +96,20 @@ const Resume = () => {
               <Spinner color="#2077ea" />
             </Center>
           ) : (
-            <SimpleGrid columns={{ base: 1, sm: 2, md: 2, lg: 3 }} gap="5%">
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 2, lg: 3 }} gap="3%">
               {isSimpleChecked &&
-                simpleResumes.map((item, index) => (
-                  <Box key={"simple" + index}>
-                    <Image src={item.imageUrl}></Image>
-                    <Flex p={2} justify="space-between" align="center">
-                      <Text fontSize="1.5rem" fontWeight="bold">
-                        {item.name}
-                      </Text>
-                      <IconButton
-                        icon={<DownloadIcon color="white  " />}
-                        bg="#2077ea"
-                        justifySelf="flex-end"
-                        _hover={{
-                          bg: "blue.600",
-                        }}
-                        _focus={{
-                          bg: "blue.600",
-                        }}
-                        onClick={() => onDownload(item)}
-                      />
-                    </Flex>
-                  </Box>
+                simpleResumes.map((item, idx) => (
+                  <ResumeCard key={"simple" + idx} item={item} />
                 ))}
 
               {isProChecked &&
-                proResumes.map((item, index) => (
-                  <Box key={"pro" + index}>
-                    <Image src={item.imageUrl}></Image>
-                    <Flex p={2} justify="space-between" align="center">
-                      <Text
-                        textAlign="center"
-                        fontSize="1.5rem"
-                        fontWeight="bold"
-                      >
-                        {item.name}
-                      </Text>
-                      <IconButton
-                        icon={<DownloadIcon color="white  " />}
-                        bg="#2077ea"
-                        justifySelf="flex-end"
-                        _hover={{
-                          bg: "blue.600",
-                        }}
-                        _focus={{
-                          bg: "blue.600",
-                        }}
-                        onClick={() => onDownload(item)}
-                      />
-                    </Flex>
-                  </Box>
+                proResumes.map((item, idx) => (
+                  <ResumeCard key={"pro" + idx} item={item} />
                 ))}
 
               {isModernChecked &&
-                modernResumes.map((item, index) => (
-                  <Box key={"modern" + index}>
-                    <Image src={item.imageUrl}></Image>
-                    <Flex p={2} justify="space-between" align="center">
-                      <Text
-                        textAlign="center"
-                        fontSize="1.5rem"
-                        fontWeight="bold"
-                      >
-                        {item.name}
-                      </Text>
-                      <IconButton
-                        icon={<DownloadIcon color="white  " />}
-                        bg="#2077ea"
-                        justifySelf="flex-end"
-                        _hover={{
-                          bg: "blue.600",
-                        }}
-                        _focus={{
-                          bg: "blue.600",
-                        }}
-                        onClick={() => onDownload(item)}
-                      />
-                    </Flex>
-                  </Box>
+                modernResumes.map((item, idx) => (
+                  <ResumeCard key={"modern" + idx} item={item} />
                 ))}
             </SimpleGrid>
           )}
