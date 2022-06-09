@@ -36,9 +36,10 @@ const RecentJobs = () => {
     const API_URL = "https://white-scholar-admin.herokuapp.com/rest";
     fetch(`${API_URL}/jobs`)
       .then(res => res.json())
-      .then(data => setJobs([...data]));
-
-    setTimeout(() => setLoading(false), 3000);
+      .then(data => {
+        setJobs([...data]);
+        setLoading(false);
+      });
   }, []);
 
   return (
