@@ -47,6 +47,7 @@ const Login = ({ onFormChange, onClose }) => {
         if (res.token) {
           user.setCookie("token", res.token);
           user.setToken(res.token);
+          user.setName(res.name);
           toast({
             title: "Logged In Successfully!",
             status: "success",

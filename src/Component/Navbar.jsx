@@ -12,9 +12,9 @@ import {
 import { HamburgerIcon } from "@chakra-ui/icons";
 import logo from "../img/logo2.svg";
 import { Link, useLocation } from "react-router-dom";
-import Contribute from "./Contribute";
 import Auth from "./Auth";
 import { UserContext } from "../contexts/UserContext";
+import Profile from "./Profile";
 
 const links = [
   {
@@ -95,7 +95,7 @@ const Navbar = props => {
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        {!!user.token ? <Contribute /> : <Auth />}
+        {!!user.token ? <Profile /> : <Auth />}
       </Box>
     </Flex>
   );

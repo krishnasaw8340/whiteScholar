@@ -7,11 +7,9 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
-  setKeyword,
-  setFilterBy,
   Center,
   Heading,
-  Select
+  Select,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import WebsiteCard from "./WebsiteCard";
@@ -44,9 +42,14 @@ const HelpfulWebsites = () => {
   return (
     <Box pb="5%" mx={{ base: 0, sm: 8, md: 24 }}>
       <Box my="30px" mb="60px" textAlign="center">
-        <Heading size="2xl">The Hidden Websites that<br/> you are looking for.</Heading>
+        <Heading size="2xl">
+          The Hidden Websites that
+          <br /> you are looking for.
+        </Heading>
         <Text mt="15px">
-          The exact website for your work is available only on this page.<br/> All you need to do is just search what you want.<br/> And also you can ask your desire query for particular website.
+          The exact website for your work is available only on this page.
+          <br /> All you need to do is just search what you want.
+          <br /> And also you can ask your desire query for particular website.
         </Text>
       </Box>
       <Flex

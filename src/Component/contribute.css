@@ -1,17 +1,14 @@
-#headContribute{
-    text-align: center;
-     background: -webkit-linear-gradient(rgb(255, 82, 24), rgb(24, 142, 246));
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     /* text-decoration: underline; */
-     font-size: 30px;
-     font-weight: bold;
-     
-
-
+#headContribute {
+  text-align: center;
+  background: -webkit-linear-gradient(rgb(255, 82, 24), rgb(24, 142, 246));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* text-decoration: underline; */
+  font-size: 30px;
+  font-weight: bold;
 }
-#howCss{
-    font-size: 20px;
-    padding: 10px 0 10px 10px;
-
+#howCss {
+  font-size: 20px;
+  padding: 10px 0 10px 10px;
 }

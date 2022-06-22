@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
     sameSite: "lax",
   });
   const [token, setToken] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const newToken = cookies.token;
@@ -17,7 +18,7 @@ export const UserProvider = ({ children }) => {
   }, [cookies.token]);
 
   return (
-    <UserContext.Provider value={{ token, setCookie, setToken }}>
+    <UserContext.Provider value={{ token, setToken, name, setName, setCookie }}>
       {children}
     </UserContext.Provider>
   );
