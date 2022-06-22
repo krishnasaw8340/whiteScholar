@@ -26,35 +26,10 @@ import tools from "../img/tools.svg";
 import contribute from "../img/contribute.svg";
 import websites from "../img/websites.svg";
 import join from "../img/joinwithus.svg";
-import tweet from "../img/tweet.jpg";
-import krishna from "../img/krishna.jpg";
-import amit from "../img/amit.png";
-import linkedin from "../img/linkedin.png";
-import abhinav from "../img/abhinav.png";
-import HelpfulWebsites from "./HelpfulWebsites";
 import {Modal, ModalHeader} from "reactstrap";
 
 const review = [
-  // {
-  //     pic: "KS",
-  //     name: "Krishna Kr Saw",
-  //     des: "I found this website amazing, it helps me to get a perfect job that suit my skill"
-  // },
-  // {
-  //     pic: "VG",
-  //     name: "Vicky Gupta",
-  //     des: "I found this website amazing, it helps me to get a perfect job that suit my skill"
-  // },
-  // {
-  //     pic: "KA",
-  //     name: "Kumar Abhinav",
-  //     des: "I found this website amazing, it helps me to get a perfect job that suit my skill"
-  // },
-  // {
-  //     pic: "AS",
-  //     name: "Amit Sharma",
-  //     des: "I found this website amazing, it helps me to get a perfect job that suit my skill"
-  // },
+
   {
     pic: "HP",
     name: "Hrishabh Pant",
@@ -78,40 +53,7 @@ const review = [
   },
 ];
 
-const members = [
-  {
-    profile: krishna,
-    position: "Founder",
-    t: tweet,
-    tLink: "https://twitter.com/Krissna01",
-    l: linkedin,
-    lLink: "https://www.linkedin.com/in/krishna-kr-saw-9082b9196/",
-  },
-  {
-    profile: amit,
-    position: "Co-Founder",
-    t: tweet,
-    tLink: "https://twitter.com/Krissna01",
-    l: linkedin,
-    lLink: "https://www.linkedin.com/in/krishna-kr-saw-9082b9196/",
-  },
-  {
-    profile: abhinav,
-    position: "Social Media Manager",
-    t: tweet,
-    tLink: "https://twitter.com/Krissna01",
-    l: linkedin,
-    lLink: "https://www.linkedin.com/in/krishna-kr-saw-9082b9196/",
-  },
-  {
-    profile: amit,
-    position: "Content Writer",
-    t: tweet,
-    tLink: "https://twitter.com/Krissna01",
-    l: linkedin,
-    lLink: "https://www.linkedin.com/in/krishna-kr-saw-9082b9196/",
-  },
-];
+
 const social = [
   {
     header: "Telegram group",
@@ -222,12 +164,11 @@ const Home = () => {
             <Flex mt={6}>
               <a href="#explore">
                 {" "}
-                <Button colorScheme="blue" mr={4}>
-                  {" "}
+                <Button as="a" href="#services" colorScheme="blue" mr={4}>
                   Explore Now
                 </Button>{" "}
               </a>
-              <Button colorScheme="blue">Joins Us</Button>
+              <Button as="a" href="#join-us" colorScheme="blue">Joins Us</Button>
             </Flex>
           </Flex>
           <Box mt={{ base: 12, md: 0 }}>
@@ -241,6 +182,7 @@ const Home = () => {
       {/* ABOUT US SECTION  */}
 
       <Box
+      id="services"
         m="0 5% 0 5%"
         border="4px solid "
         borderColor="blue.500"
@@ -351,63 +293,9 @@ const Home = () => {
         </Flex>
       </Box>
 
-      {/*  Our Members  */}
-
-      <Box m="0 8% 0  8%">
-        <Text id="head" mt="10%">
-          Meet Our Teams
-        </Text>
-        <SimpleGrid ml="18%" gap={1} columns={{ base: 1, sm: 2, md: 3, lg: 2 }}>
-          {members.map((social, idx) => (
-            <GridItem key={idx} p={4} mx={{ base: 6, sm: 1 }}>
-              <LinkBox
-                p={4}
-                w="300px"
-                borderRadius={8}
-                boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1);"
-                transition="all 200ms ease-in-out"
-                _hover={{
-                  transform: "scale(1.1, 1.1)",
-                  borderRadius: "9px",
-                  borderLeft: "5px solid",
-                  borderColor: "blue.500",
-                  boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.5);",
-                }}
-              >
-                <Box h="100%" w="100%" align="center">
-                  <Image
-                    boxSize="150px"
-                    borderRadius="200px"
-                    objectFit="cover"
-                    alt="Dan Abramov"
-                    src={social.profile}
-                  ></Image>
-                  <Text
-                    color="blue.500"
-                    fontSize="20px"
-                    fontWeight="bold"
-                    p="10px 0 10px 0"
-                  >
-                    {social.position}
-                  </Text>
-                  <Flex justifyContent="center" alignItems="center">
-                    <a href={social.tLink} target="_blank" rel="noreferrer">
-                      <Image h="40px" mr="20px" src={social.t}></Image>
-                    </a>
-                    <a href={social.lLink} target="_blank" rel="noreferrer">
-                      <Image h="40px" mr="20px" src={social.l}></Image>
-                    </a>
-                  </Flex>
-                </Box>
-              </LinkBox>
-            </GridItem>
-          ))}
-        </SimpleGrid>
-      </Box>
-
       {/* CONTACT US SECTION */}
 
-      <Box m="0 8% 10% 8%">
+      <Box id="join-us" m="0 8% 10% 8%">
         <Text id="head" mt="10%">
           Join Our NewsLetter
         </Text>
@@ -452,13 +340,7 @@ const Home = () => {
             fontSize="18px"
             ml="5%"
           >
-            <a
-              href="https://twitter.com/Krissna01"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Admin
-            </a>
+            
           </Text>
           {/* <Text color="whiteAlpha.900" fontSize="20px" ml="5%">Copyright @2022 whiteScholar</Text> */}
           <Box color="whiteAlpha.900" fontSize="18px" textAlign="center">

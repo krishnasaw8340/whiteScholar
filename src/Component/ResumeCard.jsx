@@ -15,7 +15,7 @@ const ResumeCard = ({ item }) => {
         src={`/resources/resumes/${item.imagePath}`}
         transition="transform 300ms ease-in-out"
         _hover={{
-          transform: "scale(200%, 200%)",
+          transform: "scale(120%, 120%)",
           border: "2px #2077ea solid",
         }}
         _focus={{
