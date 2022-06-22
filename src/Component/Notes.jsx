@@ -1,4 +1,4 @@
-import { Box, Button, Flex, GridItem, Heading, Input, LinkBox, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Input,  Text } from '@chakra-ui/react'
 import React from 'react'
 import { Search2Icon,HamburgerIcon } from '@chakra-ui/icons'
 

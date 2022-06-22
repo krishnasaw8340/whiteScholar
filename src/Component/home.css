@@ -108,3 +108,21 @@
   will-change: transform;
   animation: marquee-horizontal-alt 200s linear infinite;
  }
+ .modalBody{
+  /* display: flex; */
+  position: fixed;
+  /* flex: 50%; */
+  /* justify-content: center; */
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 1000;
+  /* align-items: center; */
+  /* text-align: center; */
+  padding: 50px;
+
+ }
+ .modalHeader{
+  font-size: 30px;
+  color: #2077ea;
+
+ }

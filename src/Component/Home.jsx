@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import React from "react";
 import pic from "../img/pic.svg";
 import "../Component/home.css";
@@ -30,6 +31,8 @@ import krishna from "../img/krishna.jpg";
 import amit from "../img/amit.png";
 import linkedin from "../img/linkedin.png";
 import abhinav from "../img/abhinav.png";
+import HelpfulWebsites from "./HelpfulWebsites";
+import {Modal, ModalHeader} from "reactstrap";
 
 const review = [
   // {
@@ -150,12 +153,12 @@ const list = [
   },
   {
     title: "Study-Notes",
-    des: "A whitescholar member can share and download hand-written notes and cheat sheets..",
+    des: "A whiteScholar member can share and download hand-written notes and cheat sheets..",
     svg: tools,
   },
   {
     title: "Contribution Section",
-    des: "We proudly show our Contributors in whiteScholar,There is a contribution section where everyone can contribute to grow this community.",
+    des: "We proudly give access to the Users in whiteScholar, So that they can contribute to grow this community. ",
     svg: contribute,
   },
   {
@@ -165,8 +168,14 @@ const list = [
   },
 ];
 const Home = () => {
+  const [modal, setModal] = useState(false);
   return (
+    <>
+
+    
+    
     <Box>
+    
       <Box p={4 * 8} pr={8} pl={24}>
         <SimpleGrid columns={{ base: 1, md: 2 }}>
           <Flex direction="column" alignItems="flex-start" spacing={4}>
@@ -271,6 +280,7 @@ const Home = () => {
       </Box>
 
       {/* Customer Review  */}
+      
       <Box m="0 8% 0  8%">
         <Text id="head" mt="10%">
           Testimonials
@@ -321,9 +331,23 @@ const Home = () => {
           p="10px 0 10px 0"
           color="purple.800"
         >
-          <a href="#">
+        <Modal
+        size='lg'
+        isOpen={modal}
+        toggle={()=>setModal(!modal)}
+        >
+        <Box >
+        <ModalHeader  >
+           <h1 className="modalHeader">Hello</h1>
+          </ModalHeader>
+        </Box>
+         
+
+        
+        </Modal>
+          <Text cursor="pointer" onClick={()=>setModal(true)}>
             Give your Feedback and see yourself in review section....
-          </a>
+          </Text>
         </Flex>
       </Box>
 
@@ -446,6 +470,7 @@ const Home = () => {
         </Flex>
       </Box>
     </Box>
+    </>
   );
 };
 

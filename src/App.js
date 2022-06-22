@@ -5,7 +5,6 @@ import Resume from "./Component/Resume";
 import Notes from "./Component/Notes";
 import Home from "./Component/Home";
 import HelpfulWebsites from "./Component/HelpfulWebsites";
-import PesonalGrowth from "./Component/PesonalGrowth";
 import RecentJobs from "./Component/RecentJobs";
 import { Box } from "@chakra-ui/react";
 import Contribute from "./Component/Contribute";
