@@ -12,7 +12,6 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import React from "react";
 import pic from "../img/pic.svg";
 import "../Component/home.css";
@@ -26,7 +25,6 @@ import tools from "../img/tools.svg";
 import contribute from "../img/contribute.svg";
 import websites from "../img/websites.svg";
 import join from "../img/joinwithus.svg";
-import { Modal, ModalHeader } from "reactstrap";
 
 const review = [
   {
@@ -108,7 +106,7 @@ const list = [
   },
 ];
 const Home = () => {
-  const [modal, setModal] = useState(false);
+  
   return (
     <>
       <Box>
@@ -270,14 +268,8 @@ const Home = () => {
             p="10px 0 10px 0"
             color="purple.800"
           >
-            <Modal size="lg" isOpen={modal} toggle={() => setModal(!modal)}>
-              <Box>
-                <ModalHeader>
-                  <h1 className="modalHeader">Hello</h1>
-                </ModalHeader>
-              </Box>
-            </Modal>
-            <Text cursor="pointer" onClick={() => setModal(true)}>
+            
+            <Text cursor="pointer">
               Give your Feedback and see yourself in review section....
             </Text>
           </Flex>

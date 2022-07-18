@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import WebsiteCard from "./WebsiteCard";
-import dayjs from "dayjs";
 import { Search2Icon } from "@chakra-ui/icons";
 
 const resourceTypes = [

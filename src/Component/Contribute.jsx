@@ -19,8 +19,9 @@ import { useRef, useState } from "react";
 import "../Component/contribute.css";
 import { storage } from "../config/firebase";
 // import firebase from "../config/firebase";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
+import { useEffect } from "react";
 
 const Contribute = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,6 +32,7 @@ const Contribute = () => {
   const [websiteData, setWebsiteData] = useState();
   const [notesData, setNotesData] = useState();
   const [uploadFile, setUploadFile] = useState();
+  const [imageList, setImageList] = useState([]);
 
   // Job Data
   const JobHandleChange = e => {
@@ -59,7 +61,7 @@ const Contribute = () => {
   const jobSubmit = async e => {
     e.preventDefault();
     const res = await fetch(
-      "https://whitescholar-66a1d-default-rtdb.firebaseio.com/job-data.json",
+      "https://whitescholar-787e1-default-rtdb.firebaseio.com/jobData.json",
       {
         method: "POST",
         headers: {
@@ -72,6 +74,7 @@ const Contribute = () => {
     );
     if (res) {
       alert("Data is stored: ");
+      console.log(JobData);
     } else {
       alert("Fill the data");
     }
@@ -80,7 +83,7 @@ const Contribute = () => {
   const websiteSubmit = async e => {
     e.preventDefault();
     const res = await fetch(
-      "https://whitescholar-66a1d-default-rtdb.firebaseio.com/helpful-sites-data.json",
+      "https://whitescholar-787e1-default-rtdb.firebaseio.com/WebsiteData.json",
       {
         method: "POST",
         headers: {
@@ -97,7 +100,8 @@ const Contribute = () => {
       alert("Fill the data");
     }
   };
-
+  
+  const imageListRef = ref ( storage, "Notes/")
   const uploadDataChange = () => {
     if (uploadFile == null) return;
     const imageRef = ref(storage, `Notes/${uploadFile.name + v4()}`);
@@ -105,6 +109,18 @@ const Contribute = () => {
       alert("Contribution File is added 👍");
     });
   };
+
+  useEffect(() => {
+    listAll(imageListRef).then((response)=>{
+      response.items.forEach((item)=>{
+        getDownloadURL(item).then((url)=>{
+          setImageList((prev)=>[...prev, url]);
+        });
+      });
+    });
+    
+  }, [])
+  
   const returnInputs = type => {
     switch (type) {
       case "job":
