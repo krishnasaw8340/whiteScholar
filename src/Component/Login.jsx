@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { FaLock } from "react-icons/fa";
 import { AtSignIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const CFaLock = chakra(FaLock);
@@ -29,7 +28,6 @@ const Login = ({ onFormChange, onClose }) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
-  const navigate = useNavigate();
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -55,7 +53,6 @@ const Login = ({ onFormChange, onClose }) => {
             isClosable: true,
           });
           onClose();
-          navigate("/");
         } else
           toast({
             title: "Error!",

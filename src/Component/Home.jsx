@@ -108,9 +108,8 @@ const list = [
 const Home = () => {
   
   return (
-    <>
       <Box>
-        <Box p={4 * 8} pr={8} pl={24}>
+        <Box p={4 * 8} pr={{base: 4, md: 8}} pl={{base: 4, md: 24}}>
           <SimpleGrid columns={{ base: 1, md: 2 }}>
             <Flex direction="column" alignItems="flex-start" spacing={4}>
               <Text
@@ -180,12 +179,12 @@ const Home = () => {
           borderRadius="10px"
         >
           <Text id="head">Our Services</Text>
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 2, lg: 3 }}>
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 2, lg: 3 }} gap={16}>
             {list.map((item, idx) => (
               <Box
                 key={idx}
-                m="0 22% 0 22%"
-                pl="3%"
+                mx='10%'
+                p={4}
                 id="text1"
                 borderRadius={4}
                 boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1);"
@@ -198,7 +197,7 @@ const Home = () => {
                   boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.5);",
                 }}
               >
-                <Stack className="diamond">
+                <Stack mx='auto' className="diamond">
                   <AspectRatio h="90px">
                     <Image src={item.svg} mt="30px" id="aboutImg"></Image>
                   </AspectRatio>
@@ -332,7 +331,6 @@ const Home = () => {
           </Flex>
         </Box>
       </Box>
-    </>
   );
 };
 
