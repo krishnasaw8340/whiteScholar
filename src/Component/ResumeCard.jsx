@@ -39,7 +39,7 @@ const ResumeCard = ({ item, ...rest }) => {
         </Text>
         <IconButton
           icon={<DownloadIcon color="white" />}
-          bg=""
+          bg="blue.500"
           justifySelf="flex-end"
           _hover={{
             bg: "blue.600",
